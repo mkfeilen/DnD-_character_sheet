@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="html_form.css">
+    <title>Dungeons and Dragons Character creator</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Handjet:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <img id="logo" src="DnD.png" />
+
+    <h1 class="title">Dungeons and Dragons character form.</h1>
+    <img class="picture" src="sorcerer.webp" />
+
+    <p class="heading">Select character race</p>
+    <select class="inputBox" id="race" name="race" onchange="setRace()">
+        <option value="elf">elf</option>
+        <option value="half-elf">half-elf</option>
+        <option value="human">human</option>
+        <option value="dwarf">dwarf</option>
+        <option value="halfling">halfling</option>
+        <option value="gnome">gnome</option>
+        <option value="half-orc">half-orc</option>
+        <option value="dragonborn"dragonborn></option>
+    </select>
+    <p id="raceResult"></p>
+    <script>
+        function setRace() {
+            let x = document.getElementById("race");
+            document.getElementById("raceResult").innerHTML = "Your race is: " + x.value;
+        }
+
+    </script>
+    <img class="picture" src="rogue.webp" />
+
+    <p class="heading">Add your character's name</p>
+    <input class="inputBox" id="name" name="name" oninput="myName()" onfocus="nameColour(this.id)"
+        onblur="colourBack(this.id)">
+    <p id="characterName"></p>
+    <script>
+        function myName() {
+            let x = document.getElementById("name");
+            document.getElementById("characterName").innerHTML = "Character's name is: " + x.value;
+        }
+
+        function nameColour(x) {
+            document.getElementById(x).style.background = "purple";
+        }
+
+        function colourBack(x) {
+            document.getElementById(x).style.background = "grey";
+        }
+    </script>
+
+    <p>or randomly generate your characters name</p>
+
+    <select class="inputBox" id="gender" name="gender">
+        <option value="male">male</option>
+        <option value="female">female</option>
+    </select>
+    <input class="buttons" type="button" onclick="generateName()" value="generate name" />
+    <p id="returnedName"></p>
+    <script>
+
+        const elfMaleName = ["Adran", "Aelar", "Aramil", "Arannis", "Aust", "Beiro", "Berrian", "Carric", "Enialis", "Erdan", "Erevan", "Galinndan", "Hadarai", "Heian", "Himo", "Immeral", "Ivellios", "Laucian", "Mindartis", "Paelis", "Peren", "Quarion", "Riardon", "Rolen", "Soveliss", "Thamior","Tharivol","Theren", "Varis" ];
+        const dwarfMaleName = ["Adrik", "Alberich", "Baern", "Barendd", "Brottor", "Breunor", "Dain", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorin", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"];
+        const dwarfFemaleName = ["Amber", "Artin", "Audhild", "Bardryn", "Dagnal", "Diesa", "Eldeth", "Falkrunn", "Finellen", "Gunnloda", "Gurdis", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"];
+        const dwarfClanName = ["Balderk", "Battlehammer", "Brawnanvil", "Dankil", "Fireforge", "Frostbeard", "Gorunn", "Holderhek", "Ironfist", "Loderr", "Lotgehr", "Rumnaheim", "Strakeln", "Torunn", "Ungart"];
+
+        function generateName() {
+            let gender = document.getElementById("gender").value;
+            let x = document.getElementById("race").value;
+            console.log(gender, x);
+
+
+            if (x === "dwarf") {
+                let randomSurnameIndex = Math.floor((Math.random() * (dwarfClanName.length)));
+
+                if (gender === "male") {
+                    let randomFirstNameIndex = Math.floor((Math.random() * (dwarfMaleName.length)));
+
+                    return document.getElementById("returnedName").innerHTML = "Your character name is: " + dwarfMaleName[randomFirstNameIndex] + " " + dwarfClanName[randomSurnameIndex];
+                } else if (gender === "female") {
+                    let randomFirstNameIndex = Math.floor((Math.random() * (dwarfFemaleName.length)));
+
+                    return document.getElementById("returnedName").innerHTML = "Your character name is: " + dwarfFemaleName[randomFirstNameIndex] + " " + dwarfClanName[randomSurnameIndex];
+                }
+            }
+
+        }
+    </script>
+    <br>
+
+
+
+    <img class="picture" src="fighter.webp" />
+
+    <p class="heading">Select character class</p>
+    <select class="inputBox" id="class" name="class" onchange="setClass()">
+        <option value="barbarian">Barbarian</option>
+        <option value="bard">Bard</option>
+        <option value="cleric">Cleric</option>
+        <option value="druid">Druid</option>
+        <option value="fighter">Fighter</option>
+        <option value="monk">Monk</option>
+        <option value="paladin">Paladin</option>
+        <option value="ranger">Ranger</option>
+        <option value="rogue">Rogue</option>
+        <option value="sorcerer">Sorcerer</option>
+        <option value="warlock">Warlock</option>
+        <option value="wizard">Wizard</option>
+    </select>
+    <p id="classResult"></p>
+    <script>
+        function setClass() {
+            let x = document.getElementById("class");
+            document.getElementById("classResult").innerHTML = "Your class is: " + x.value;
+        }
+    </script>
+
+    <img class="picture" src="ranger.jpg" />
+
+    <p class="heading">Select character alignment</p>
+    <select class="inputBox" id="alignment" name="alignment" onchange="setAlignment()">
+        <option value="lawful-good">lawful-good</option>
+        <option value="lawful-neutral">lawful-neutral</option>
+        <option value="lawful-evil">lawful-evil</option>
+        <option value="neutral-good">neutral-good</option>
+        <option value="true-neutral">true-neutral</option>
+        <option value="neutral-evil">neutral-evil</option>
+        <option value="chaotic-good">chaotic-good</option>
+        <option value="chaotic-neutral">chaotic-neutral</option>
+        <option value="chaotic-evil">chaotic-evil</option>
+    </select>
+
+    <p id="alignmentResult"></p>
+    <script>
+        function setAlignment() {
+            let x = document.getElementById("alignment");
+            document.getElementById("alignmentResult").innerHTML = "Your alignment is: " + x.value;
+        }
+    </script>
+
+
+        <p>Click the following button to Roll your basic stats: </p>
+        <input class="buttons" type="button" onclick="statList()" value="Roll" />
+        <p id="rolledStats" name="rolledStats"></p>
+        <script>
+            function randomRoll() {
+                let diceRoll = Math.floor((Math.random() * 6) + 1);
+                return diceRoll;
+            }
+
+            function setStats() {
+                let diceArray = []
+                diceArray.push(randomRoll(), randomRoll(), randomRoll(), randomRoll());
+                let sortedDice = diceArray.sort();
+                diceArray.shift();
+                let finalStat = 0;
+                for (let i = 0; i < diceArray.length; i++) {
+                    finalStat += diceArray[i];
+                }
+                return finalStat;
+            }
+
+            function statList() {
+                let statLength = 6;
+                let statArr = [];
+                for (let i = 0; i < statLength; i++) {
+                    statArr.push(setStats());
+                }
+                document.getElementById("rolledStats").innerHTML = "Your stat values are: " + statArr;
+            }
+        </script>
+
+        <p>Assign each of the dice rolls above to one of the basic stats</p>
+        <form>
+            <label>Strength <input class="inputBox" type="number" name="strength" id="strength" /></label><br>
+            <label>Dexterity <input class="inputBox" type="number" name="dexterity" id="dexterity" /></label><br>
+            <label>Constitution <input class="inputBox" type="number" name="constitution"
+                    id="constitution" /></label><br>
+            <label>Intelligence <input class="inputBox" type="number" name="intelligence"
+                    id="intelligence" /></label><br>
+            <label>Wisdom <input class="inputBox" type="number" name="wisdom" id="wisdom" /></label><br>
+            <label>Charisma <input class="inputBox" type="number" name="charisma" id="charisma" /></label><br>
+            <input class="buttons" type="button" onclick="charStats()" value="Assign" />
+        </form>
+
+        <p id="printedStr"></p>
+        <p id="printedDex"></p>
+        <p id="printedCon"></p>
+        <p id="printedInt"></p>
+        <p id="printedWis"></p>
+        <p id="printedChar"></p>
+        <script>
+            function charStats() {
+                let str = document.getElementById("strength");
+                let dex = document.getElementById("dexterity");
+                let con = document.getElementById("constitution");
+                let int = document.getElementById("intelligence");
+                let wis = document.getElementById("wisdom");
+                let char = document.getElementById("charisma");
+                document.getElementById("printedStr").innerHTML = "Your Strength is: " + str.value;
+                document.getElementById("printedDex").innerHTML = "Your Dexterity is: " + dex.value;
+                document.getElementById("printedCon").innerHTML = "Your Constitution is: " + con.value;
+                document.getElementById("printedInt").innerHTML = "Your Intelligence is: " + int.value;
+                document.getElementById("printedWis").innerHTML = "Your Wisdom is: " + wis.value;
+                document.getElementById("printedChar").innerHTML = "Your Charisma is: " + char.value;
+            }
+        </script>
+   
+
+    <img class="picture" src="wizard.jpg" />
+
+    <p class="heading">Initiative</p>
+    <button class="buttons" id="initiative" onclick="calcInit()">Calculate</button>
+    <p id="returnedInit"></p>
+    <script>
+        function calcInit() {
+            let dex = document.getElementById("dexterity");
+            let dexInitiative = (dex.value - 10) / 2;
+            document.getElementById("returnedInit").innerHTML = "Your Initiative is: " + dexInitiative;
+        }
+    </script>
+
+    <img class="picture" src="monk.jpg" />
+
+    <p class="heading">Hit points</p>
+    <button class="buttons" id="hitPoints" onclick="calcHP()">Calculate</button>
+    <p id="returnedHP"></p>
+    <script>
+        function calcHP() {
+            let x = document.getElementById("class").value;
+            console.log(x);
+            if (x === "barbarian") {
+                let hp = rollX(12);
+                document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+            } else if (x === "fighter" || x === "paladin" || x === "ranger") {
+                let hp = rollX(10);
+                document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+            } else if (x === "bard" || x === "cleric" || x === "druid" || x === "monk" || x === "rogue" || x === "warlock") {
+                let hp = rollX(8);
+                document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+            } else if (x === "sorcerer" || x === "wizard") {
+                let hp = rollX(6);
+                document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+            }
+        }
+
+        function rollX(x) {
+            let roll1 = Math.floor(Math.random() * x) + 1;
+            let roll2 = Math.floor(Math.random() * x) + 1
+            return Math.max(roll1, roll2);
+        }
+    </script>
+
+    <img class="picture" src="barbarian.jpg" />
+
+</body>
+
+</html>

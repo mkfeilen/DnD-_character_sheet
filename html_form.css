@@ -1,0 +1,75 @@
+* {
+    background-color: black;
+    color:aqua;
+    font-size: 14px;
+    font-family: 'Handjet', Times, serif;
+    text-align: left;
+    margin-left: 150px;
+    font-size: large;
+    font-weight: 300;
+    
+
+
+}
+#logo{
+    
+     width: 120px;
+     height: 60px;
+     
+     position:fixed;
+     top:50px;
+     left:100px;
+ }
+
+.title{
+    
+    font-size:xxx-large;
+    color:cyan;
+  
+    padding-top:100px;
+    padding-left:200px;
+    
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+.picture{
+    height:220px;
+    border-radius: 10px;
+    
+   
+}
+  
+.heading{
+ 
+ font-size: x-large;
+ color:deeppink;
+ font-weight: 400;
+ padding-top: 25px;
+ 
+
+
+}
+
+.inputBox{
+    color:lawngreen;
+    border-radius: 5px;
+    width:120px;
+    height: 25px;
+
+}
+
+#name{
+ color: lawngreen;
+}
+
+.buttons{
+    background-color: darkviolet;
+    color:yellow;
+    height: 24px;
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+    
+}
+
