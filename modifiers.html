@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="html_form.css">
+    <title>Dungeons and Dragons Character creator</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Handjet:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<p>Assign each of the dice rolls above to one of the basic stats</p>
+<form>
+    <label>Strength <input class="inputBox" type="number" name="strength" id="strength" /></label><br>
+    <label>Dexterity <input class="inputBox" type="number" name="dexterity" id="dexterity" /></label><br>
+    <label>Constitution <input class="inputBox" type="number" name="constitution"
+            id="constitution" /></label><br>
+    <label>Intelligence <input class="inputBox" type="number" name="intelligence"
+            id="intelligence" /></label><br>
+    <label>Wisdom <input class="inputBox" type="number" name="wisdom" id="wisdom" /></label><br>
+    <label>Charisma <input class="inputBox" type="number" name="charisma" id="charisma" /></label><br>
+    <input class="buttons" type="button" onclick="charStats()" value="Assign" />
+</form>
+
+<p id="printedStr"></p>
+<p id="printedDex"></p>
+<p id="printedCon"></p>
+<p id="printedInt"></p>
+<p id="printedWis"></p>
+<p id="printedChar"></p>
+<script>
+    function charStats() {
+        let str = document.getElementById("strength");
+        let dex = document.getElementById("dexterity");
+        let con = document.getElementById("constitution");
+        let int = document.getElementById("intelligence");
+        let wis = document.getElementById("wisdom");
+        let char = document.getElementById("charisma");
+           function modifierMaths(x){
+             return Math.floor((x.value - 10)/2);
+
+           }
+        document.getElementById("printedStr").innerHTML = "Your Strength is: " + str.value + " --- modifier: " + modifierMaths(str) ;
+        document.getElementById("printedDex").innerHTML = "Your Dexterity is: " + dex.value + " --- modifier: " +  modifierMaths(dex);
+        document.getElementById("printedCon").innerHTML = "Your Constitution is: " + con.value + " --- modifier: " +  modifierMaths(con);
+        document.getElementById("printedInt").innerHTML = "Your Intelligence is: " + int.value + " --- modifier: " +  modifierMaths(int);
+        document.getElementById("printedWis").innerHTML = "Your Wisdom is: " + wis.value + " --- modifier: " +  modifierMaths(wis);
+        document.getElementById("printedChar").innerHTML = "Your Charisma is: " + char.value + " --- modifier: " +  modifierMaths(char);
+    }
+</script>
+
+</body>
