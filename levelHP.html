@@ -1,0 +1,83 @@
+<p class="heading">Level </p>
+    <label for="levels">Input your character's initial level</label>
+         <input type="number" class="inputBox" id="initialLevel" name="initialLevel" oninput="setLevel()" >
+    
+    <p id="level"></p>
+    <script>
+        
+        function setLevel() {
+            let initialtLevel = document.getElementById("initialLevel");
+
+            document.getElementById("level").innerHTML = "Your current level is: " + initialLevel.value;
+            
+        }
+
+    </script>
+<p class="heading">Select character class</p>
+<select class="inputBox" id="class" name="class" onchange="setClass()">
+    <option value="barbarian">Barbarian</option>
+    <option value="bard">Bard</option>
+    <option value="cleric">Cleric</option>
+    <option value="druid">Druid</option>
+    <option value="fighter">Fighter</option>
+    <option value="monk">Monk</option>
+    <option value="paladin">Paladin</option>
+    <option value="ranger">Ranger</option>
+    <option value="rogue">Rogue</option>
+    <option value="sorcerer">Sorcerer</option>
+    <option value="warlock">Warlock</option>
+    <option value="wizard">Wizard</option>
+</select>
+<p id="classResult"></p>
+<script>
+    function setClass() {
+        let x = document.getElementById("class");
+        document.getElementById("classResult").innerHTML = "Your class is: " + x.value;
+    }
+</script>
+
+<p class="heading">Hit points</p>
+<button class="buttons" id="hitPoints" onclick="calcHP()">Calculate</button>
+<p id="returnedHP"></p>
+<script>
+    function calcHP() {
+        let x = document.getElementById("class").value;
+        
+        if (x === "barbarian") {
+            let hp = leveledRoll(12);
+            document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+        } else if (x === "fighter" || x === "paladin" || x === "ranger") {
+            let hp = leveledRoll(10);
+            document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+        } else if (x === "bard" || x === "cleric" || x === "druid" || x === "monk" || x === "rogue" || x === "warlock") {
+            let hp = leveledRoll(8);
+            document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+        } else if (x === "sorcerer" || x === "wizard") {
+            let hp = leveledRoll(6);
+            document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+        }
+    }
+function leveledRoll(x){
+let level = document.getElementById("initialLevel").value;
+if( level == 1){
+    return x;
+} else {
+    let currentHealth = x;
+    for (i=1; i < level ; i++){
+       currentHealth = currentHealth + rollX(x);
+   
+    
+} 
+return currentHealth;
+
+}
+
+
+}
+    function rollX(x) {
+        
+        let roll1 = Math.floor(Math.random() * x) + 1;
+        let roll2 = x/2;          
+        return Math.max(roll1, roll2);
+    }
+</script>
