@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="html_form.css">
+    <title>Dungeons and Dragons Character creator</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Handjet:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <img id="logo" src="DnD.png" />
+    <header>
+
+    <h1 class="title">Dungeons and Dragons character form.</h1>
+
+    </header>
+    <img class="picture" src="sorcerer.webp" />
+
+   
+    
+
+    <p class="heading">Select character race</p>
+    <select class="inputBox" id="race" name="race" onchange="setRace()">
+        <option value="elf">elf</option>
+        <option value="half-elf">half-elf</option>
+        <option value="human">human</option>
+        <option value="dwarf">dwarf</option>
+        <option value="halfling">halfling</option>
+        <option value="gnome">gnome</option>
+        <option value="half-orc">half-orc</option>
+        <option value="dragonborn">dragonborn</option>
+    </select>
+    <p id="raceResult" class="result"></p>
+    <script>
+        function setRace() {
+            let x = document.getElementById("race").value;
+            
+            document.getElementById("raceResult").innerHTML = "Your race is: " + x;
+        }
+
+    </script>
+    <img class="picture" src="rogue.webp" />
+
+    <p class="heading">Add your character's name</p>
+    <input class="inputBox" id="name" name="name" oninput="myName()" onfocus="nameColour(this.id)"
+        onblur="colourBack(this.id)">
+    <p id="characterName" class="result"></p>
+    <script>
+        function myName() {
+            let x = document.getElementById("name");
+            document.getElementById("characterName").innerHTML = "Character's name is: " + x.value;
+        }
+
+        function nameColour(x) {
+            document.getElementById(x).style.background = "purple";
+        }
+
+        function colourBack(x) {
+            document.getElementById(x).style.background = "grey";
+        }
+    </script>
+
+    
+<p>or randomly generate your characters name</p>
+
+<select class="inputBox" id="gender" name="gender">
+    <option value="male">male</option>
+    <option value="female">female</option>
+</select>
+<input class="buttons" type="button" onclick="generateName()" value="generate name" />
+<p id="returnedName" class="result"></p>
+
+<script>
+const names = {
+"dwarf": {
+    "forenames": {
+        "male": ["Adrik", "Alberich", "Baern", "Barendd", "Brottor", "Breunor", "Dain", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorin", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"],
+        "female": ["Amber", "Artin", "Audhild", "Bardryn", "Dagnal", "Diesa", "Eldeth", "Falkrunn", "Finellen", "Gunnloda", "Gurdis", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"]
+    },
+    "lastNames": ["Balderk", "Battlehammer", "Brawnanvil", "Dankil", "Fireforge", "Frostbeard", "Gorunn", "Holderhek", "Ironfist", "Loderr", "Lotgehr", "Rumnaheim", "Strakeln", "Torunn", "Ungart"]
+},
+"elf": {
+    "forenames": {
+        "male": ["Adran", "Aelar", "Aramil", "Arannis", "Aust", "Beiro", "Berrian", "Carric", "Enialis", "Erdan", "Erevan", "Galinndan", "Hadarai", "Heian", "Himo", "Immeral", "Ivellios", "Laucian", "Mindartis", "Paelis", "Peren", "Quarion", "Riardon", "Rolen", "Soveliss", "Thamior", "Tharivol", "Theren", "Varis"],
+        "female": ["Adrie", "Althaea", "Anastrianna", "Andraste", "Antinua", "Bethrynna", "Birel", "Caelynn", "Drusilia", "Enna", "Felosial", "Ielenia", "Jelenneth", "Keyleth", "Leshanna", "Lia", "Meriele", "Mialee", "Naivara", "Quelenna", "Quillathe", "Sariel", "Shanairra", "Shava", "Silaqui", "Theirastra", "Thia", "Vadania", "Valanthe", "Xanaphia"]
+
+    },
+    "lastNames": ["Amakiir", "Gemflower", "Amastacia", "Starflower", "Galanodel", "Moonwhisper", "Holimion", "Diamonddew", "Ilphelkiir", "Gemblossom", "Liadon", "Silverfrond", "Meliamne", "Okenheel", "Nailo", "Nightbreeze", "Siannodel", "Moonbrook", "Xiloscient", "Goldpetal"]
+},
+"human": {
+    "forenames": {
+        "male": ["Aseir", "Bardeid", "Haseid", "Khemed", "Mehmen", "Sudeiman", "Zasheir", "Darvin", "Dorn", "Evendur", "Gorstag", "Grim ", "Helm", "Malark", "Morn", "Randal", "Stedd", "Ander", "Blath", "Bran", "Frath", "Geth", "Lander", "Luth", "Malcer", "Stor", "Taman", "Urth", "Aoth", "Bareris", "Ehput-Ki", "Kethoth", "Mumed", "Ramas", "So-Kehur", "Thazar-De", "Urhur", "Anton", "Diero", "Marcon", "Pieron", "Rimardo", "Romero", "Salazar", "Umbero"],
+        "female": ["Atala", "Ceidil", "Hama", "Jasmal", "Meilil", "Seipora", "Yasheira", "Zasheida", "Arveene", "Esvele", "Jhessail", "Kerri", "Lureene", "Miri", "Rowan", "Shandri", "Tessele", "Amafrey", "Betha", "Cefrey", "Kethra", "Mara", "Olga", "Silifrey", "Westra", "Arizima", "Chathi", "Nephis", "Nulara", "Murithi", "Sefris", "Thola", "Umara", "Zolis", "Balama", "Dona", "Faila", "Jalana", "Luisa", "Marta", "Quara", "Selise", "Vonda"]
+
+    },
+    "lastNames": ["Basha", "Dumein", "Jassan", "Khalid", "Mostana", "Pashar", "Rein", "Amblecrown", "Buckman", "Dundragon", "Evenwood", "Greycastle", "Tallstag", "Brightwood", "Helder", "Hornraven", "Lackman", "Stormwind", "Windrivver", "Ankhalab", "Anskuld", "Fezim", "Hahpet", "Nathandem", "Sepret", "Uuthrakt", "Agosto", "Astorio", "Calabra", "Domine", "Falone", "Marivaldi", "Pisacar", "Ramondo"]
+
+},
+"dragonborn": {
+    "forenames": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn", "Tarhun", "Torinn"],
+        "female": ["Akra", "Biri", "Daar", "Ferideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina", "Thava", "Uadjit"]
+
+    },
+    "lastNames": ["Clethtinthiallor", "Daardendrian", "Delmirev", "Drachendanion", "Fenkenkabradon", "Kepeshkmolik", "Kerrhylon", "Kimbatuul", "Linxakasendalor", "Myastan", "Nemmonis", "Norixius", "Ophinshtalajiir", "Prexijandilin", "Shestendeliath", "Turnuroth", "Verthisathurgiesh", "Yarjerit"]
+
+},
+"gnome": {
+    "forenames": {
+        "male": ["Alston", "Alvyn", "Boddynock", "Brocc", "Burgell", "Dimble", "Eldon", "Erky", "Fonkin", "Frug", "Gerbo", "Gimble", "Glim", "Jebeddo", "Kellen", "Namfoodle", "Orryn", "Roondar", "Seebo", "Sindri", "Warryn", "Wrenn", "Zook"],
+        "female": ["Bimpnottin", "Breena", "Caramip", "Carlin", "Donella", "Duvamil", "Ella", "Ellyjobell", "Ellywick", "Lilli", "Loopmottin", "Lorilla", "Mardnab", "Nissa", "Nyx", "Oda", "Orla", "Roywyn", "Shamil", "Tana", "Waywocket", "Zanna"]
+
+    },
+    "lastNames": ["Beren", "Daergel", "Folkor", "Garrick", "Nackle", "Murnig", "Ningel", "Raulnor", "Scheppen", "Timbers", "Turen"]
+
+},
+"halfling": {
+    "forenames": {
+        "male": ["Alton", "Ander", "Cade", "Corrin", "Eldon", "Errich", "Finnan", "Garret", "Lindal", "Lyle", "Merric", "Milo", "Osborn", "Perrin", "Reed", "Roscoe", "Welby"],
+        "female": ["Andry", "Bree", "Callie", "Cora", "Euphemia", "Jilian", "Kithri", "Lavinia", "Lidda", "Merla", "Nedda", "Paela", "Portia", "Seraphina", "Shaena", "Trym", "Vani", "Verna"]
+    },
+    "lastNames": ["Brushgather", "Goodbarrel", "Greenbottle", "High-hill", "Hilltopple", "Leagallow", "Tealeaf", "Thorngage", "Tosscobble", "Underbough"]
+
+},
+"half-orc": {
+    "forenames": {
+        "male": ["Dench", "Feng", "Gell", "Henk", "Holg", "Imsh", "Keth", "Krusk", "Mhurren", "Ront", "Shump", "Thokk"],
+        "female": ["Baggi", "Emen", "Engong", "Kansif", "Myev", "Neega", "Ovak", "Ownka", "Shautha", "Sutha", "Vola", "Volen", "Yevelda"]
+    },
+    "lastNames": ["Basha", "Dumein", "Jassan", "Khalid", "Mostana", "Pashar", "Rein", "Amblecrown", "Buckman", "Dundragon", "Evenwood", "Greycastle", "Tallstag", "Brightwood", "Helder", "Hornraven", "Lackman", "Stormwind", "Windrivver", "Ankhalab", "Anskuld", "Fezim", "Hahpet", "Nathandem", "Sepret", "Uuthrakt", "Agosto", "Astorio", "Calabra", "Domine", "Falone", "Marivaldi", "Pisacar", "Ramondo"]
+
+},
+"half-elf": {
+    "forenames": {
+        "male": ["Adran", "Aelar", "Aramil", "Arannis", "Aust", "Beiro", "Berrian", "Carric", "Enialis", "Erdan", "Erevan", "Galinndan", "Hadarai", "Heian", "Himo", "Immeral", "Ivellios", "Laucian", "Mindartis", "Paelis", "Peren", "Quarion", "Riardon", "Rolen", "Soveliss", "Thamior", "Tharivol", "Theren", "Varis", "Aseir", "Bardeid", "Haseid", "Khemed", "Mehmen", "Sudeiman", "Zasheir", "Darvin", "Dorn", "Evendur", "Gorstag", "Grim ", "Helm", "Malark", "Morn", "Randal", "Stedd", "Ander", "Blath", "Bran", "Frath", "Geth", "Lander", "Luth", "Malcer", "Stor", "Taman", "Urth", "Aoth", "Bareris", "Ehput-Ki", "Kethoth", "So-Kehur", "Thazar-De", "Urhur", "Anton", "Diero", "Marcon", "Pieron", "Rimardo", "Romero", "Salazar", "Umbero"],
+        "female": ["Adrie", "Althaea", "Anastrianna", "Andraste", "Antinua", "Bethrynna", "Birel", "Caelynn", "Drusilia", "Enna", "Felosial", "Ielenia", "Jelenneth", "Keyleth", "Leshanna", "Lia", "Meriele", "Mialee", "Naivara", "Quelenna", "Quillathe", "Sariel", "Shanairra", "Shava", "Silaqui", "Theirastra", "Thia", "Vadania", "Valanthe", "Xanaphia", "Atala", "Ceidil", "Hama", "Jasmal", "Meilil", "Seipora", "Yasheira", "Zasheida", "Arveene", "Esvele", "Jhessail", "Kerri", "Lureene", "Miri", "Rowan", "Shandri", "Tessele", "Amafrey", "Betha", "Cefrey", "Kethra", "Mara", "Olga", "Silifrey", "Westra", "Arizima", "Nephis", "Nulara", "Murithi", "Sefris", "Thola", "Umara", "Zolis", "Balama", "Dona", "Faila", "Jalana", "Luisa", "Marta", "Quara", "Selise", "Vonda"]
+
+    },
+    "lastNames": ["Amakiir", "Gemflower", "Amastacia", "Starflower", "Galanodel", "Moonwhisper", "Holimion", "Diamonddew", "Ilphelkiir", "Gemblossom", "Liadon", "Silverfrond", "Meliamne", "Okenheel", "Nailo", "Nightbreeze", "Siannodel", "Moonbrook", "Xiloscient", "Goldpetal", "Basha", "Dumein", "Jassan", "Khalid", "Mostana", "Pashar", "Rein", "Amblecrown", "Buckman", "Dundragon", "Evenwood", "Greycastle", "Tallstag", "Brightwood", "Helder", "Hornraven", "Lackman", "Stormwind", "Windrivver", "Anskuld", "Nathandem", "Sepret", "Uuthrakt", "Agosto", "Astorio", "Calabra", "Domine", "Falone", "Marivaldi", "Pisacar", "Ramondo"]
+
+}
+}
+
+
+function generateName(){
+    let gender = document.getElementById("gender").value;
+    let x = document.getElementById("race").value;
+    let randomSurnameIndex = Math.floor((Math.random() * (names[x]["lastNames"].length)));
+    if ( gender === "male"){
+        let randomFirstNameIndex = Math.floor((Math.random() * (names[x]["forenames"]["male"].length)));
+        return document.getElementById("returnedName").innerHTML = "Your character name is: " + names[x]["forenames"]["male"][randomFirstNameIndex] + " " + names[x]["lastNames"][randomSurnameIndex];
+    } else if (gender === "female"){
+         let randomFirstNameIndex = Math.floor((Math.random() * (names[x]["forenames"]["female"].length)));
+        return document.getElementById("returnedName").innerHTML = "Your character name is: " + names[x]["forenames"]["female"][randomFirstNameIndex] + " " + names[x]["lastNames"][randomSurnameIndex];
+    }
+}
+
+</script>
+<br>
+<img class="picture" src="teifling.webp" />
+
+
+    
+    <p class="heading">Level </p>
+    <label for="levels">Input your character's initial level</label>
+         <input type="number" class="inputBox" id="initialLevel" name="initialLevel" oninput="setLevel()" >
+    
+    <p id="level" class="result"></p>
+    <script>
+        function setLevel() {
+            let initialLevel = document.getElementById("initialLevel");
+            document.getElementById("level").innerHTML = "Your current level is: " + initialLevel.value;
+        }
+    </script>
+
+    <img class="picture" src="fighter.webp" />
+
+    <p class="heading">Select character class</p>
+    <select class="inputBox" id="class" name="class" onchange="setClass()">
+        <option value="barbarian">Barbarian</option>
+        <option value="bard">Bard</option>
+        <option value="cleric">Cleric</option>
+        <option value="druid">Druid</option>
+        <option value="fighter">Fighter</option>
+        <option value="monk">Monk</option>
+        <option value="paladin">Paladin</option>
+        <option value="ranger">Ranger</option>
+        <option value="rogue">Rogue</option>
+        <option value="sorcerer">Sorcerer</option>
+        <option value="warlock">Warlock</option>
+        <option value="wizard">Wizard</option>
+    </select>
+    <p id="classResult" class="result"></p>
+    <script>
+        function setClass() {
+            let x = document.getElementById("class");
+            document.getElementById("classResult").innerHTML = "Your class is: " + x.value;
+        }
+    </script>
+
+    <img class="picture" src="ranger.jpg" />
+
+    <p class="heading">Select character alignment</p>
+    <select class="inputBox" id="alignment" name="alignment" onchange="setAlignment()">
+        <option value="lawful-good">lawful-good</option>
+        <option value="lawful-neutral">lawful-neutral</option>
+        <option value="lawful-evil">lawful-evil</option>
+        <option value="neutral-good">neutral-good</option>
+        <option value="true-neutral">true-neutral</option>
+        <option value="neutral-evil">neutral-evil</option>
+        <option value="chaotic-good">chaotic-good</option>
+        <option value="chaotic-neutral">chaotic-neutral</option>
+        <option value="chaotic-evil">chaotic-evil</option>
+    </select>
+
+    <p id="alignmentResult" class="result"></p>
+    <script>
+        function setAlignment() {
+            let x = document.getElementById("alignment");
+            document.getElementById("alignmentResult").innerHTML = "Your alignment is: " + x.value;
+        }
+    </script>
+
+ <img class="picture" src="dragonborn.webp" />
+
+ <div class="basicStats">
+
+<p class="heading">Basic Stats</p>
+        <p>Click the following button to Roll your basic stats: </p>
+        <input class="buttons" type="button" onclick="statList(), raceBonus()" value="Roll" />
+        <p id="rolledStats" name="rolledStats" class="result"></p>
+        <p id="racialBonus" class="result"></p>
+        <script>
+            function randomRoll() {
+                let diceRoll = Math.floor((Math.random() * 6) + 1);
+                return diceRoll;
+            }
+
+            function setStats() {
+                let diceArray = []
+                diceArray.push(randomRoll(), randomRoll(), randomRoll(), randomRoll());
+                let sortedDice = diceArray.sort();
+                diceArray.shift();
+                let finalStat = 0;
+                for (let i = 0; i < diceArray.length; i++) {
+                    finalStat += diceArray[i];
+                }
+                return finalStat;
+            }
+
+            function statList() {
+                let statLength = 6;
+                let statArr = [];
+                for (let i = 0; i < statLength; i++) {
+                    statArr.push(setStats());
+                }
+                document.getElementById("rolledStats").innerHTML = "Your stat values are: " + statArr;
+            
+            }
+
+            function raceBonus(){
+                let race = document.getElementById("race").value;
+               
+                switch (race){
+                    case "elf":
+                    document.getElementById("racialBonus").innerHTML = "As an Elf +2 to Dexterity and High Elf: Inteligence +1, Wood Elf: Wisdom +1 or Drow: Charisma +1 " ;
+                        break;
+                    case "half-elf":
+                    document.getElementById("racialBonus").innerHTML = "As a Half-elf +2 to Charisma and +1 to two other attributes of your choice." ;
+                        break;
+                    case "human":
+                    document.getElementById("racialBonus").innerHTML = "As a Human +1 to all your attributes " ;
+                        break;
+                    case "dwarf":
+                    document.getElementById("racialBonus").innerHTML = "As a Dwarf +2 to Constitution and Hill Dwarf: +1 Wisdom or Mountain Dwarf: +2 Strength " ;
+                        break;
+                    case "halfling":
+                    document.getElementById("racialBonus").innerHTML = "As a Halfling +2 to Dexterity and Lightfoot: +1 Charisma, Stout: +1 Constitution " ;
+                        break;
+                    case "gnome": 
+                    document.getElementById("racialBonus").innerHTML = "As a Gnome +2 to Intelligance and Forest Gnome: +1 Dexterity or Mountain Gnome: +1 Constitution " ;
+                        break;
+                    case "half-orc": 
+                    document.getElementById("racialBonus").innerHTML = "As a Half-Orc +2 to Strength and +1 to Constitution " ;
+                        break;
+                    case "dragonborn": 
+                    document.getElementById("racialBonus").innerHTML = "As a Dragonborn +2 to Strength and +1 to Charisma " ;
+                        break;
+
+                }
+            }
+        </script>
+
+        <p>Assign each of the dice rolls above to one of the basic stats</p>
+        <form>
+            <label>Strength <input class="inputBox" type="number" name="strength" id="strength" /></label><br>
+            <label>Dexterity <input class="inputBox" type="number" name="dexterity" id="dexterity" /></label><br>
+            <label>Constitution <input class="inputBox" type="number" name="constitution"
+                    id="constitution" /></label><br>
+            <label>Intelligence <input class="inputBox" type="number" name="intelligence"
+                    id="intelligence" /></label><br>
+            <label>Wisdom <input class="inputBox" type="number" name="wisdom" id="wisdom" /></label><br>
+            <label>Charisma <input class="inputBox" type="number" name="charisma" id="charisma" /></label><br>
+            <input class="buttons" type="button" onclick="charStats()" value="Assign" />
+        </form>
+        
+        <p id="printedStr" class="result"></p>
+        <p id="printedDex" class="result"></p>
+        <p id="printedCon" class="result"></p>
+        <p id="printedInt" class="result"></p>
+        <p id="printedWis" class="result"></p>
+        <p id="printedChar" class="result"></p>
+        <script>
+            function charStats() {
+                let str = document.getElementById("strength");
+                let dex = document.getElementById("dexterity");
+                let con = document.getElementById("constitution");
+                let int = document.getElementById("intelligence");
+                let wis = document.getElementById("wisdom");
+                let char = document.getElementById("charisma");
+                   function modifierMaths(x){
+                     return Math.floor((x.value - 10)/2);
+        
+                   }
+                document.getElementById("printedStr").innerHTML = "Your Strength is: " + str.value + " --- modifier: " + modifierMaths(str) ;
+                document.getElementById("printedDex").innerHTML = "Your Dexterity is: " + dex.value + " --- modifier: " +  modifierMaths(dex);
+                document.getElementById("printedCon").innerHTML = "Your Constitution is: " + con.value + " --- modifier: " +  modifierMaths(con);
+                document.getElementById("printedInt").innerHTML = "Your Intelligence is: " + int.value + " --- modifier: " +  modifierMaths(int);
+                document.getElementById("printedWis").innerHTML = "Your Wisdom is: " + wis.value + " --- modifier: " +  modifierMaths(wis);
+                document.getElementById("printedChar").innerHTML = "Your Charisma is: " + char.value + " --- modifier: " +  modifierMaths(char);
+            }
+        </script>
+   
+
+    <img class="picture" src="wizard.jpg" />
+
+</div>
+
+
+
+    <p class="heading">Initiative</p>
+    <button class="buttons" id="initiative" onclick="calcInit()">Calculate</button>
+    <p id="returnedInit" class="result"></p>
+    <script>
+        function calcInit() {
+            let dex = document.getElementById("dexterity");
+            let dexInitiative = Math.floor((dex.value - 10) / 2);
+            document.getElementById("returnedInit").innerHTML = "Your Initiative is: " + dexInitiative;
+            console.log("dex init" + dex.value);
+        }
+    </script>
+
+    <img class="picture" src="monk.jpg" />
+
+    <p class="heading">Hit points</p>
+    <button class="buttons" id="hitPoints" onclick="calcHP()">Calculate</button>
+    <p id="returnedHP" class="result"></p>
+    <script>
+        function calcHP() {
+            let x = document.getElementById("class").value;
+            
+            if (x === "barbarian") {
+                let hp = leveledRoll(12);
+                document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+            } else if (x === "fighter" || x === "paladin" || x === "ranger") {
+                let hp = leveledRoll(10);
+                document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+            } else if (x === "bard" || x === "cleric" || x === "druid" || x === "monk" || x === "rogue" || x === "warlock") {
+                let hp = leveledRoll(8);
+                document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+            } else if (x === "sorcerer" || x === "wizard") {
+                let hp = leveledRoll(6);
+                document.getElementById("returnedHP").innerHTML = "Your HP is: " + hp;
+            }
+        }
+    function leveledRoll(x){
+        let level = document.getElementById("initialLevel").value;
+        let con = document.getElementById("constitution").value;
+        let conMod = Math.floor((con - 10) / 2);
+
+
+        if( level == 1){
+             return x;
+         } else {
+            let currentHealth = x;
+            for (i=1; i < level ; i++){
+            currentHealth = currentHealth + rollX(x) + conMod;
+           } 
+        return currentHealth;
+        }
+    }
+
+    function rollX(x) {
+            let roll1 = Math.floor(Math.random() * x) + 1;
+            let roll2 = x/2;          
+            return Math.max(roll1, roll2);
+        }
+    </script>
+
+    <img class="picture" src="barbarian.jpg" />   
+
+    <P class="heading">Armour Class</P>
+    <input type="checkbox" id="shield" name="shield">
+    <label for="shield"> Add a shield</label><br>
+    
+   <br>
+    <select class="inputBox" id="armour" name="armour" onchange="setArmour()" >
+        <option value="none">none</option>
+        <option value="padded">padded</option>
+        <option value="leather">leather</option>
+        <option value="studded-leather">studded-leather</option>
+        <option value="hide">hide</option>
+        <option value="chain shirt">chain mail</option>
+        <option value="scale mail">scale mail</option>
+        <option value="breastplate">breastplate</option>
+        <option value="half-plate">half-plate</option>
+        <option value="ring_mail">ring mail</option>
+        <option value="chain_mail">chain mail</option>
+        <option value="splint">splint</option>
+        <option value="plate">plate</option>
+    </select>
+    <p id="returnedArmour" class="result"></p>
+    <script>
+       
+        function setArmour(){
+            let armourClass = 0;
+            let armour = document.getElementById("armour").value;
+            let dex = document.getElementById("dexterity");
+            let dexMod = Math.floor((dex.value - 10) / 2);
+              // console.log("dex AC: " + dex.value);
+             //  console.log("dexmod" + dexMod);
+              // console.log("armour : " + armour);
+               
+
+            if (armour === "none" ){
+                 armourClass = 10 + dexMod  + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+           } else if (armour === "padded" || armour === "leather"){
+                 armourClass = 11 + dexMod  + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+            } else if (armour === "studded-leather" ){
+                armourClass = 12 + dexMod  + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+           } else if (armour ===  "hide"){
+                 armourClass = 12 + (Math.min(dexMod, 2))  + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+           } else if (armour === "chain shirt" ){
+                armourClass = 13 + (Math.min(dexMod, 2))  + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+           } else if (armour === "scale mail" || armour === "breastplate" ){
+                armourClass = 14 + (Math.min(dexMod, 2))   + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+           } else if (armour === "half-plate"){
+                 armourClass = 15 + (Math.min(dexMod, 2))   + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+           } else if (armour === "ring_mail"){
+                 armourClass = 14  + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+            } else if (armour === "chain_mail"){
+                armourClass = 16 + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+              } else if (armour === "splint"){
+                armourClass = 17 + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+             } else if (armour === "plate"){
+                 armourClass = 18 + addShield();
+                document.getElementById("returnedArmour").innerHTML = "Your AC is: " + armourClass;
+           } 
+           console.log("AC END : " + armourClass);
+        }
+
+        function addShield(){
+             let shieldPresent = document.getElementById("shield").checked;
+              if(shieldPresent === true){
+                  return 2;
+                   } else {
+                        return 0;
+                   } 
+            // document.getElementById("shield").reset();
+         }       
+    </script>
+
+<img class="picture" src="druid.webp" />
+
+<p class="heading">Proficiency bonus</p>
+<button class="buttons" id="proficiencyBonus" onclick="calcPB()">Calculate</button>
+<p id="returnedProficiencyBonus" class="result"></p>
+
+<script>
+    
+    function calcPB(){
+        let level = document.getElementById("initialLevel").value;
+        let proficiencyBonus = 0;
+        if (level > 0 && level < 5){
+            proficiencyBonus = 2;
+            console.log(proficiencyBonus);
+            document.getElementById("returnedProficiencyBonus").innerHTML = "Your Proficiency Bonus is: " + proficiencyBonus;
+        } else if (level > 4 && level < 9){
+            proficiencyBonus = 3;
+            document.getElementById("returnedProficiencyBonus").innerHTML = "Your Proficiency Bonus is: " + proficiencyBonus;
+        } else if (level > 8 && level < 13){
+            proficiencyBonus = 4;
+            document.getElementById("returnedProficiencyBonus").innerHTML = "Your Proficiency Bonus is: " + proficiencyBonus;
+        } else if (level > 12 && level < 17){
+            proficiencyBonus = 5;
+            document.getElementById("returnedProficiencyBonus").innerHTML = "Your Proficiency Bonus is: " + proficiencyBonus;
+        } else if (level > 16 && level < 21){
+            proficiencyBonus = 6;
+            document.getElementById("returnedProficiencyBonus").innerHTML = "Your Proficiency Bonus is: " + proficiencyBonus;
+        }
+    }
+</script>
+
+<img class="picture" src="gnome.webp" />
+
+
+</body>
+
+</html>
